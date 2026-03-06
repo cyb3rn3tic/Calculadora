@@ -18,15 +18,22 @@ while(Executar == true){
     string? strNumero1 = Console.ReadLine();
     Console.Write("Digite o segundo número: ");
     string? strNumero2 = Console.ReadLine();
+    Console.WriteLine();
+
+    Console.WriteLine("O primeiro número digitado foi: " + strNumero1);
+    Console.WriteLine("O segundo número digitado foi: " + strNumero2);
+
+    bool Numero1Vazio = string.IsNullOrEmpty(strNumero1);
+    bool Numero2Vazio = string.IsNullOrEmpty(strNumero2);
+
+    if(Numero1Vazio == true || Numero2Vazio == true)
+    {
+        Console.WriteLine("\nPor favor, digite um número válido!\n");
+        continue;
+    }
 
     int Numero1 = Convert.ToInt32(strNumero1);
     int Numero2 = Convert.ToInt32(strNumero2);
-
-    //string ResultadoSoma = Numero1 + Numero2;
-
-    //int ResultadoSoma = Numero1 + Numero2;
-
-    //int ResultadoSubtracao = Numero1 - Numero2;
 
     Console.WriteLine("\nEscolha a operação desejada: ");
     Console.WriteLine("1 - Soma");  
@@ -39,15 +46,12 @@ while(Executar == true){
 
     string? Opcao = Console.ReadLine();
 
-    if(Opcao == "S")
+    if(Opcao == "S" || Opcao == "s")
     {
         Executar = false;
 
         continue;
     }
-
-    Console.WriteLine("O primeiro número digitado foi: " + strNumero1);
-    Console.WriteLine("O segundo número digitado foi: " + strNumero2);
 
     //int Opcao = Convert.ToInt32(strOpcao);
     int Resultado;
