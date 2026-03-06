@@ -3,16 +3,55 @@
 //Requisito 3: Multiplicação
 //Requisito 4: Divisão
 //Requisito 5: Deve permitir a execução de múltiplas operações
+//Requisito 6: Tabuada
+//Requisito 7: Deve mostrar o histórico de operações realizadas
 
 bool Executar = true;
 
 while(Executar == true){ 
-
+    
     //Console.Clear();
 
     Console.WriteLine("------------------------------");
     Console.WriteLine("Calculadora Simples");
     Console.WriteLine("------------------------------");
+
+    Console.WriteLine("\nEscolha a operação desejada: ");
+    Console.WriteLine("1 - Soma");  
+    Console.WriteLine("2 - Subtração");
+    Console.WriteLine("3 - Multiplicação");
+    Console.WriteLine("4 - Divisão");
+    Console.WriteLine("5 - Tabuada");
+    Console.WriteLine("S - Sair");
+
+    string? Opcao = Console.ReadLine();
+
+    if(Opcao == "S" || Opcao == "s")
+    {
+        Executar = false;
+
+        return;
+    }
+
+    if(Opcao == "5")
+    {
+        Console.Write("Digite o número desejado para a tabuada: ");
+        int numeroTabuada = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("\nTabuada do " + numeroTabuada + ":\n");
+
+        for(int cont = 1; cont <= 10; cont++)
+        {
+            int resultadoTabuada = numeroTabuada * cont;
+
+            Console.WriteLine(numeroTabuada + " x " + cont + " = " + resultadoTabuada);
+        }
+
+        Console.WriteLine("\nPressione Enter para continuar...");
+        Console.ReadLine();
+
+        continue;
+    }
 
     Console.Write("Digite o primeiro número: ");
     string? strNumero1 = Console.ReadLine();
@@ -29,59 +68,54 @@ while(Executar == true){
     if(Numero1Vazio == true || Numero2Vazio == true)
     {
         Console.WriteLine("\nPor favor, digite um número válido!\n");
+        Console.WriteLine("\nPressione Enter para continuar...");
+        Console.ReadLine();
         continue;
     }
 
-    int Numero1 = Convert.ToInt32(strNumero1);
-    int Numero2 = Convert.ToInt32(strNumero2);
+    decimal Numero1 = Convert.ToDecimal(strNumero1);
+    decimal Numero2 = Convert.ToDecimal(strNumero2);
 
-    Console.WriteLine("\nEscolha a operação desejada: ");
-    Console.WriteLine("1 - Soma");  
-    Console.WriteLine("2 - Subtração");
-    Console.WriteLine("3 - Multiplicação");
-    Console.WriteLine("4 - Divisão");
-    Console.WriteLine("S - Sair");
+    
 
-    //string strOpcao = Console.ReadLine();
+    decimal Resultado;
 
-    string? Opcao = Console.ReadLine();
-
-    if(Opcao == "S" || Opcao == "s")
+    switch(Opcao)
     {
-        Executar = false;
+        case "1":
+            Resultado = Numero1 + Numero2;
+            break;
 
-        continue;
-    }
+        case "2":
+            Resultado = Numero1 - Numero2;
+            break;
 
-    //int Opcao = Convert.ToInt32(strOpcao);
-    int Resultado;
+        case "3":
+            Resultado = Numero1 * Numero2;
+            break;
 
-    if(Opcao == "1")
-    {
-        Resultado = Numero1 + Numero2;
-    }
+        case "4":
+            if(Numero2 == 0)
+            {
+                Console.WriteLine("\nNão é possível dividir por zero!");
+                Console.WriteLine("\nPressione Enter para continuar...");
+                Console.ReadLine();
 
-    else if(Opcao == "2")
-    {
-        Resultado = Numero1 - Numero2;
-    }
-
-    else if(Opcao == "3")
-    {
-        Resultado = Numero1 * Numero2;
-    }
-
-    else
-    {
-        if(Numero2 == 0)
-        {
-            Console.WriteLine("\nNão é possível dividir por zero!");
-            return;
-        } 
+                continue;
+            } 
 
             Resultado = Numero1 / Numero2;
+            break;
+
+        default:
+            Console.WriteLine("\nOpção inválida! Por favor, escolha uma opção válida.\n");
+            Console.WriteLine("\nPressione Enter para continuar...");
+            Console.ReadLine();
+
+            continue;
     }
     
     Console.WriteLine("\nO resultado dos dois numeros é: " + Resultado + "\n");
+    Console.WriteLine("\nPressione Enter para continuar...");
+    Console.ReadLine();
 }   
-
