@@ -70,9 +70,19 @@ while(Executar == true){
         Console.WriteLine("\nPor favor, digite um número válido!\n");
         Console.WriteLine("\nPressione Enter para continuar...");
         Console.ReadLine();
+        Console.WriteLine("\nPressione Enter para continuar...");
+        Console.ReadLine();
         continue;
     }
 
+    decimal Numero1 = Convert.ToDecimal(strNumero1);
+    decimal Numero2 = Convert.ToDecimal(strNumero2);
+
+    
+
+    decimal Resultado;
+
+    switch(Opcao)
     decimal Numero1 = Convert.ToDecimal(strNumero1);
     decimal Numero2 = Convert.ToDecimal(strNumero2);
 
@@ -85,7 +95,13 @@ while(Executar == true){
         case "1":
             Resultado = Numero1 + Numero2;
             break;
+        case "1":
+            Resultado = Numero1 + Numero2;
+            break;
 
+        case "2":
+            Resultado = Numero1 - Numero2;
+            break;
         case "2":
             Resultado = Numero1 - Numero2;
             break;
@@ -93,7 +109,19 @@ while(Executar == true){
         case "3":
             Resultado = Numero1 * Numero2;
             break;
+        case "3":
+            Resultado = Numero1 * Numero2;
+            break;
 
+        case "4":
+            if(Numero2 == 0)
+            {
+                Console.WriteLine("\nNão é possível dividir por zero!");
+                Console.WriteLine("\nPressione Enter para continuar...");
+                Console.ReadLine();
+
+                continue;
+            } 
         case "4":
             if(Numero2 == 0)
             {
@@ -113,9 +141,19 @@ while(Executar == true){
             Console.ReadLine();
 
             continue;
+            break;
+
+        default:
+            Console.WriteLine("\nOpção inválida! Por favor, escolha uma opção válida.\n");
+            Console.WriteLine("\nPressione Enter para continuar...");
+            Console.ReadLine();
+
+            continue;
     }
     
     Console.WriteLine("\nO resultado dos dois numeros é: " + Resultado + "\n");
+    Console.WriteLine("\nPressione Enter para continuar...");
+    Console.ReadLine();
     Console.WriteLine("\nPressione Enter para continuar...");
     Console.ReadLine();
 }   
