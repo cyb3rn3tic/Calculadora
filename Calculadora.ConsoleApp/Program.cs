@@ -6,11 +6,13 @@
 //Requisito 6: Tabuada
 //Requisito 7: Deve mostrar o histórico de operações realizadas
 
-bool Executar = true;
+string[] historicoOperacoes = new string[100]; //array
+int totalOperacoes = 0;
 
-while(Executar == true){ 
+while(true) // true = true, ou seja, o programa vai rodar para sempre, até que o usuário escolha a opção de sair (S ou s)
+{ 
     
-    //Console.Clear();
+    Console.Clear();
 
     Console.WriteLine("------------------------------");
     Console.WriteLine("Calculadora Simples");
@@ -22,14 +24,13 @@ while(Executar == true){
     Console.WriteLine("3 - Multiplicação");
     Console.WriteLine("4 - Divisão");
     Console.WriteLine("5 - Tabuada");
+    Console.WriteLine("6 - Histórico de operações");
     Console.WriteLine("S - Sair");
 
     string? Opcao = Console.ReadLine();
 
     if(Opcao == "S" || Opcao == "s")
     {
-        Executar = false;
-
         return;
     }
 
@@ -53,6 +54,30 @@ while(Executar == true){
         continue;
     }
 
+    else if(Opcao == "6")
+    {
+        Console.WriteLine("------------------------------"); 
+        Console.WriteLine("Historico de operações: \n");
+        
+        if(totalOperacoes == 0)
+        {
+            Console.WriteLine("Sem operações no histórico!");
+            Console.WriteLine("\nPressione Enter para continuar...");
+            Console.ReadLine();
+            continue;    
+        }
+
+        else 
+        for(int cont = 0; cont < totalOperacoes; cont++) //historicoOperacoes.Length no lugar de 10
+        {
+            Console.WriteLine(historicoOperacoes[cont]);
+        }
+            Console.WriteLine("\nPressione Enter para continuar...");
+            Console.ReadLine();
+            continue;
+    }    
+
+
     Console.Write("Digite o primeiro número: ");
     string? strNumero1 = Console.ReadLine();
     Console.Write("Digite o segundo número: ");
@@ -70,23 +95,12 @@ while(Executar == true){
         Console.WriteLine("\nPor favor, digite um número válido!\n");
         Console.WriteLine("\nPressione Enter para continuar...");
         Console.ReadLine();
-        Console.WriteLine("\nPressione Enter para continuar...");
-        Console.ReadLine();
+    
         continue;
     }
 
     decimal Numero1 = Convert.ToDecimal(strNumero1);
     decimal Numero2 = Convert.ToDecimal(strNumero2);
-
-    
-
-    decimal Resultado;
-
-    switch(Opcao)
-    decimal Numero1 = Convert.ToDecimal(strNumero1);
-    decimal Numero2 = Convert.ToDecimal(strNumero2);
-
-    
 
     decimal Resultado;
 
@@ -95,20 +109,11 @@ while(Executar == true){
         case "1":
             Resultado = Numero1 + Numero2;
             break;
-        case "1":
-            Resultado = Numero1 + Numero2;
-            break;
 
         case "2":
             Resultado = Numero1 - Numero2;
             break;
-        case "2":
-            Resultado = Numero1 - Numero2;
-            break;
 
-        case "3":
-            Resultado = Numero1 * Numero2;
-            break;
         case "3":
             Resultado = Numero1 * Numero2;
             break;
@@ -121,16 +126,7 @@ while(Executar == true){
                 Console.ReadLine();
 
                 continue;
-            } 
-        case "4":
-            if(Numero2 == 0)
-            {
-                Console.WriteLine("\nNão é possível dividir por zero!");
-                Console.WriteLine("\nPressione Enter para continuar...");
-                Console.ReadLine();
-
-                continue;
-            } 
+            }
 
             Resultado = Numero1 / Numero2;
             break;
@@ -141,19 +137,30 @@ while(Executar == true){
             Console.ReadLine();
 
             continue;
-            break;
+    }
 
-        default:
-            Console.WriteLine("\nOpção inválida! Por favor, escolha uma opção válida.\n");
-            Console.WriteLine("\nPressione Enter para continuar...");
-            Console.ReadLine();
-
-            continue;
+    if(totalOperacoes < historicoOperacoes.Length)
+    {  
+        if(Resultado == Numero1 + Numero2)
+        {
+            historicoOperacoes[totalOperacoes] = $"{Numero1} + {Numero2} = {Resultado}"; 
+        }
+        else if(Resultado == Numero1 - Numero2)
+        {
+            historicoOperacoes[totalOperacoes] = $"{Numero1} - {Numero2} = {Resultado}";
+        }
+        else if(Resultado == Numero1 * Numero2)
+        {
+            historicoOperacoes[totalOperacoes] = $"{Numero1} x {Numero2} = {Resultado}";
+        }
+        else 
+        {
+            historicoOperacoes[totalOperacoes] = $"{Numero1} / {Numero2} = {Resultado}";
+        }
+        totalOperacoes ++;
     }
     
     Console.WriteLine("\nO resultado dos dois numeros é: " + Resultado + "\n");
     Console.WriteLine("\nPressione Enter para continuar...");
     Console.ReadLine();
-    Console.WriteLine("\nPressione Enter para continuar...");
-    Console.ReadLine();
-}   
+}
