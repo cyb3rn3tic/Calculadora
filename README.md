@@ -29,5 +29,5 @@ Uma calculadora criada como primeiro projeto durante o curso da Acadêmia do Pro
     dotnet run --project Calculadora.ConsoleApp
     ```
 
-## https://dotnet.microsoft.com/pt-br/download/dotnet/10.0 Requisitos
-- .NET SDK 10.0
+## Requisitos
+- .NET SDK 10.0 - https://dotnet.microsoft.com/pt-br/download/dotnet/10.0 
