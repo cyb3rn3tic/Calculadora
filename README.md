@@ -1,5 +1,5 @@
 # Calculadora
-![](./.docs/calculador.gif)
+![](./.docs/calculadora.gif)
 
 ## Introdução
 
